@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Demo2WebAppDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="emp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="age" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Demo2WebAppDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="emps" EntityType="Self.emp" />
+    <FunctionImport Name="sp_EmplCreate" ReturnType="Collection(Demo2WebAppDBModel.sp_EmplCreate_Result)">
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="age" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EmplDelete">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EmplRead" ReturnType="Collection(Demo2WebAppDBModel.sp_EmplRead_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_EmplUpdate">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="age" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_EmplCreate_Result">
+    <Property Type="String" Name="name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="age" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_EmplRead_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="age" Nullable="false" MaxLength="50" />
+  </ComplexType>
+</Schema>

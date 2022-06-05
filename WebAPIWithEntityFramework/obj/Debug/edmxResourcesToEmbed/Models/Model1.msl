@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Demo2WebAppDBModelStoreContainer" CdmEntityContainer="Demo2WebAppDBEntities">
+    <EntitySetMapping Name="emps">
+      <EntityTypeMapping TypeName="IsTypeOf(Demo2WebAppDBModel.emp)">
+        <MappingFragment StoreEntitySet="emps">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="age" ColumnName="age" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
